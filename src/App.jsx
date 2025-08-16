@@ -21,20 +21,20 @@ import React, { useEffect, useMemo, useRef, useState, useCallback } from "react"
 // ----------------------------- Helpers ---------------------------------
 const LS_KEY = "yt_study_app_state_v1";
 
-// const defaultState = {
-//     theme: "system", // "light" | "dark" | "system"
-//     compact: false,
-//     distractionFree: false,
-//     projects: [
-//         {
-//             id: cryptoRandomId(),
-//             name: "My First Study Set",
-//             videos: [],
-//             createdAt: Date.now(),
-//         },
-//     ],
-//     currentProjectId: null,
-// };
+const defaultState = {
+    theme: "system", // "light" | "dark" | "system"
+    compact: false,
+    distractionFree: false,
+    projects: [
+        {
+            id: cryptoRandomId(),
+            name: "My First Study Set",
+            videos: [],
+            createdAt: Date.now(),
+        },
+    ],
+    currentProjectId: null,
+};
 
 function cryptoRandomId() {
     if (typeof crypto !== "undefined" && crypto.randomUUID) return crypto.randomUUID();
