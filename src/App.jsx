@@ -21,20 +21,20 @@ import React, { useEffect, useMemo, useRef, useState, useCallback } from "react"
 // ----------------------------- Helpers ---------------------------------
 const LS_KEY = "yt_study_app_state_v1";
 
-const defaultState = {
-    theme: "system", // "light" | "dark" | "system"
-    compact: false,
-    distractionFree: false,
-    projects: [
-        {
-            id: cryptoRandomId(),
-            name: "My First Study Set",
-            videos: [],
-            createdAt: Date.now(),
-        },
-    ],
-    currentProjectId: null,
-};
+// const defaultState = {
+//     theme: "system", // "light" | "dark" | "system"
+//     compact: false,
+//     distractionFree: false,
+//     projects: [
+//         {
+//             id: cryptoRandomId(),
+//             name: "My First Study Set",
+//             videos: [],
+//             createdAt: Date.now(),
+//         },
+//     ],
+//     currentProjectId: null,
+// };
 
 function cryptoRandomId() {
     if (typeof crypto !== "undefined" && crypto.randomUUID) return crypto.randomUUID();
@@ -320,13 +320,13 @@ export default function App() {
         return () => window.removeEventListener("keydown", onKey);
     }, [getCurrentTime, seekTo, play, pause, getPlayerState]);
 
-    // Theme handling
-    useEffect(() => {
-        const root = document.documentElement;
-        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const useDark = state.theme === "dark" || (state.theme === "system" && prefersDark);
-        root.classList.toggle("dark", useDark);
-    }, [state.theme]);
+    // // Theme handling
+    // useEffect(() => {
+    //     const root = document.documentElement;
+    //     const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    //     const useDark = state.theme === "dark" || (state.theme === "system" && prefersDark);
+    //     root.classList.toggle("dark", useDark);
+    // }, [state.theme]);
 
     const filteredNotes = useMemo(() => {
         const q = searchTerm.trim().toLowerCase();
@@ -733,7 +733,7 @@ export default function App() {
                     <div className="flex items-center gap-2">
                         <button onClick={() => setState((s) => ({ ...s, distractionFree: !s.distractionFree }))} className="px-3 py-2 rounded-2xl border border-neutral-300 dark:border-neutral-700">{state.distractionFree ? "Exit Focus" : "Focus Mode"}</button>
 
-                        <select
+                        {/* <select
                             className="px-3 py-2 rounded-2xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700"
                             value={state.theme}
                             onChange={(e) => setState((s) => ({ ...s, theme: e.target.value }))}
@@ -741,7 +741,7 @@ export default function App() {
                             <option value="system">System</option>
                             <option value="light">Light</option>
                             <option value="dark">Dark</option>
-                        </select>
+                        </select> */}
 
                         <button onClick={exportProjectJSON} className="px-3 py-2 rounded-2xl border border-neutral-300 dark:border-neutral-700">Export JSON</button>
                         <label className="px-3 py-2 rounded-2xl border border-neutral-300 dark:border-neutral-700 cursor-pointer">
